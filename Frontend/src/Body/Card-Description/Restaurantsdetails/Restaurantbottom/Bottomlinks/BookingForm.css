@@ -159,3 +159,17 @@ button.selected:hover {
   justify-content: center;
   align-items: center;
 }
+.error-message {
+  color: #d9534f;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  text-align: center;
+}
+
+.checkmark{
+  padding: 2px;
+}

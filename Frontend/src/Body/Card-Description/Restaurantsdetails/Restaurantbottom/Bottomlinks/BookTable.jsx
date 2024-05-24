@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Checkmark } from 'react-checkmark'
+import { Checkmark } from 'react-checkmark';
 import {
   faCalendarAlt,
   faUser,
@@ -9,7 +9,6 @@ import {
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import "./BookingForm.css";
-
 
 const BookTable = () => {
   const [formData, setFormData] = useState({
@@ -24,6 +23,7 @@ const BookTable = () => {
 
   const [confirmation, setConfirmation] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("");
+  const [error, setError] = useState("");
 
   const mealTimeSlots = {
     breakfast: ["08:00 AM", "09:00 AM", "10:00 AM"],
@@ -69,35 +69,44 @@ const BookTable = () => {
         },
         body: JSON.stringify(details),
       });
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-       }
-       return {
-            success: true,
-           
-        };
-       
+      }
+      return {
+        success: true,
+      };
     } catch (error) {
-        return {
-            success: false,
-            error: error.message
-        };
+      return {
+        success: false,
+        error: error.message,
+      };
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const details = {"name":"ayush"};// here we will store the data of the booktable form
+
+    // Validation checks
+    if (!formData.date || !formData.guests || !formData.meal || !formData.time) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    setError(""); // Clear error message if validation passes
+
+    const details = { ...formData }; // Pass formData directly
+
     try {
       const bookTableStatus = await bookTable(details);
       if (bookTableStatus.success) {
         setConfirmation(
-            `Thank you, ${formData.name}! Your table for ${formData.guests} on ${formData.date} at ${formData.time} for ${formData.meal} has been booked with ${formData.offer}.`
-          );
+          `Thank you, ${formData.name}! Your table for ${formData.guests} on ${formData.date} at ${formData.time} for ${formData.meal} has been booked with ${formData.offer}.`
+        );
       } else {
         console.error("Booking failed:", bookTableStatus.error);
       }
     } catch (error) {
-        console.error("Unexpected error:", error);
+      console.error("Unexpected error:", error);
     }
   };
 
@@ -227,17 +236,20 @@ const BookTable = () => {
           </div>
         </div>
 
+        {error && <div className="error-message">{error}</div>}
+
         <button type="submit" onClick={handleSubmit}>
           Proceed to Cart
         </button>
       </form>
       {confirmation && (
         <div id="confirmation" className="confirmation">
-            <Checkmark size='xLarge'/>
+          <Checkmark size="xLarge" className="checkmark" />
           {confirmation}
         </div>
       )}
     </div>
   );
 };
+
 export default BookTable;
