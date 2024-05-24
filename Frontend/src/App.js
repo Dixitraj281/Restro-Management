@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import './App.css';
 import Home from './Body/Home.jsx'
 import Header from './Nav/Header.jsx'
@@ -7,6 +7,7 @@ import SearchPage from './Body/Explore-Nearby/SearchPage.jsx'
 import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
 import Descriptionindex from './Body/Card-Description/Descriptionindex.jsx';
 import LoginReg from './Body/Login/LoginReg.jsx';
+import Preloader from './Preloaders/Preloader.jsx';
 
 function MainComponent() {
   // Using useLocation within the MainComponent
@@ -37,7 +38,17 @@ function MainComponent() {
 }
 
 function App() {
+  const [loading, setLoading]  = useState(true);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false);
+
+    },3000);
+
+  },[]);
+
   return (
+    loading?<Preloader/>:
     <Router>
       <MainComponent />
     </Router>
