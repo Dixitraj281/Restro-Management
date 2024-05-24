@@ -1,0 +1,25 @@
+const express = require('express');
+const user_route = express();
+const bodyParser = require('body-parser');
+const path = require('path');
+const session = require('session');
+const cookieParser = require('cookie-parser');
+const userController = require('../controllers/userController');
+
+
+
+
+user_route.use(cookieParser());
+user_route.use(bodyParser.json());
+user_route.use(bodyParser.urlencoded({extended:false}));
+
+user_route.post('/register',userController.insertUser);// api to handle register
+user_route.get('/home',userController.homeupload);
+user_route.post('/booktable',userController.bookTable);
+
+
+module.exports = user_route;
+
+
+
+
