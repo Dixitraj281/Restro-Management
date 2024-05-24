@@ -28,7 +28,7 @@ function MainComponent() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="info/*" element={<Descriptionindex />} />
-          <Route path="/login" element={<LoginReg />} />
+          {/* <Route path="/login" element={<LoginReg />} /> */}
         </Routes>
         <Footer />
       </div>
