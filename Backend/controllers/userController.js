@@ -118,7 +118,7 @@ const verifyLogin = async(req, res)=>{
         console.log(error);
     }
 }
-const homeupload = ()=>{
+const homeupload = (req, res)=>{
    res.send("hello how are you?");
 
 }

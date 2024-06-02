@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router
 import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
 import LoginReg from './UserBody/Login/LoginReg.jsx';
 import Preloader from './Preloaders/Preloader.jsx';
-import Adminmain from './Adminportal/Adminmain.jsx'
 
 function MainComponent() {
   // Using useLocation within the MainComponent
@@ -37,6 +36,7 @@ function MainComponent() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="info/*" element={<Descriptionindex />} />
+          {/* <Route path="/login" element={<LoginReg />} /> */}
         </Routes>
         <Footer />
       </div>

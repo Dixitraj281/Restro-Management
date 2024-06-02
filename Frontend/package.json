@@ -20,6 +20,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.17.0",
+<<<<<<< HEAD
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
@@ -27,6 +28,10 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.6",
     "lucide-react": "^0.379.0",
+=======
+    "axios": "^1.7.2",
+    "path": "^0.12.7",
+>>>>>>> 6cd25cd59cab5793b995799b93292dd6086a1ba6
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
     "react-checkmark": "^2.0.0",
