@@ -1,5 +1,4 @@
 const mongoose=require("mongoose");
-const util = require('util'); // Import the util module
 
 const mongoURL = "mongodb+srv://ayushmongo:user9876@cluster0.vbnfhte.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 mongoose.connect(mongoURL);

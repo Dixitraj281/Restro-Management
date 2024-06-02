@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
-import Home from './Body/Home.jsx'
+import './Adminmainsidebar.css';
+import Home from './UserBody/Home.jsx'
 import Header from './Nav/Header.jsx'
 import Footer from './Footer/Footer.jsx'
-import SearchPage from './Body/Explore-Nearby/SearchPage.jsx'
+import SearchPage from './UserBody/Explore-Nearby/SearchPage.jsx'
 import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
-import Descriptionindex from './Body/Card-Description/Descriptionindex.jsx';
-import LoginReg from './Body/Login/LoginReg.jsx';
+import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
+import LoginReg from './UserBody/Login/LoginReg.jsx';
+import Adminmain from './Adminportal/Adminmain.jsx';
+// import Adminmain from './Adminportal/Adminmain.jsx';
+
 
 function MainComponent() {
   // Using useLocation within the MainComponent
@@ -19,16 +22,17 @@ function MainComponent() {
       <Routes>
         <Route path='/login' element={<LoginReg />} />
       </Routes>
-    );
-  } else {
+    );}
+  else {
     return (
       <div>
         <Header />
         <Routes>
+          {/* User part */}
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="info/*" element={<Descriptionindex />} />
-          {/* <Route path="/login" element={<LoginReg />} /> */}
+          <Route path="/admin" element={<Adminmain/>}/>
         </Routes>
         <Footer />
       </div>

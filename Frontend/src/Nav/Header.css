@@ -40,6 +40,12 @@
 .host-button {
   margin-right: 10px;
 }
+.user-admin-btn{
+  margin: 0;
+  padding: 0;
+  height: fit-content;
+  width: fit-content;
+}
 
 @media (max-width: 768px) {
   .header {
