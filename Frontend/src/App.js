@@ -1,5 +1,5 @@
-import React from 'react';
-import './Adminmainsidebar.css';
+import React, { useEffect,useState } from 'react';
+import './App.css';
 import Home from './UserBody/Home.jsx'
 import Header from './Nav/Header.jsx'
 import Footer from './Footer/Footer.jsx'
@@ -7,9 +7,8 @@ import SearchPage from './UserBody/Explore-Nearby/SearchPage.jsx'
 import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router-dom';
 import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
 import LoginReg from './UserBody/Login/LoginReg.jsx';
-import Adminmain from './Adminportal/Adminmain.jsx';
-// import Adminmain from './Adminportal/Adminmain.jsx';
-
+import Preloader from './Preloaders/Preloader.jsx';
+import Adminmain from './Adminportal/Adminmain.jsx'
 
 function MainComponent() {
   // Using useLocation within the MainComponent
@@ -23,6 +22,12 @@ function MainComponent() {
         <Route path='/login' element={<LoginReg />} />
       </Routes>
     );}
+    else if (location.pathname === '/admin') {
+      return (
+        <Routes>
+          <Route path="/admin" element={<Adminmain/>}/>
+        </Routes>
+      );}
   else {
     return (
       <div>
@@ -32,7 +37,6 @@ function MainComponent() {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="info/*" element={<Descriptionindex />} />
-          <Route path="/admin" element={<Adminmain/>}/>
         </Routes>
         <Footer />
       </div>
@@ -41,7 +45,17 @@ function MainComponent() {
 }
 
 function App() {
+  const [loading, setLoading]  = useState(true);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setLoading(false);
+
+    },3000);
+
+  },[]);
+
   return (
+    loading?<Preloader/>:
     <Router>
       <MainComponent />
     </Router>
