@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "/Users/ayushsolanki/Desktop/cloned/Restro-Management/Frontend/src/Body/Admins/adminStyle.css";
 
-const AddFoodPhotos = () => {
+const AddFoodPhotos = (props) => {
   const [foodPhotos, setfoodPhotos] = useState([]);
   const handleOnAdd = (e) => {
     const files = document.getElementById("file_input").files;
@@ -9,8 +9,10 @@ const AddFoodPhotos = () => {
     setfoodPhotos([...foodPhotos, ...fileArray]);
     document.getElementById("file_input").value = "";
   };
-  const handleOnUpload = () => {
+  const handleOnUpload = (e) => {
     // not implemented yet
+   props.a([...foodPhotos]);
+   console.log("Food photos have been uploaded successfully");
   };
   const handleOnDelete = () => {
     const newfoodPhotos = foodPhotos;
@@ -25,11 +27,11 @@ const AddFoodPhotos = () => {
         <div className="Buttons">
           <button onClick={handleOnAdd}>Add + </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Upload</button>
+          <button onClick={handleOnUpload}>Click To Conform</button>
         </div>
         {/* <button onClick={handleOnUpload}>Upload </button> */}
       </div>
-      <div class="ImagesShow">
+      <div className="ImagesShow">
         {foodPhotos.map((image, index) => (
           <img
             className="Images"

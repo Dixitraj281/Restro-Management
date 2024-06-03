@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const AddResPhotos = () => {
+const AddResPhotos = (props) => {
   const [resPhotos, setResPhotos]= useState([]);
 
   const handleOnAdd = (e) => {
@@ -11,7 +11,8 @@ const AddResPhotos = () => {
     document.getElementById("file_input_res").value = "";
   };
   const handleOnUpload = () => {
-    // not implemented yet
+    props.a([...resPhotos]);
+    console.log("Restruant Phots have been uploaded successfully");
   };
   const handleOnDelete = () => {
     const newresPhotos = resPhotos;
@@ -28,10 +29,10 @@ const AddResPhotos = () => {
       <div className="Buttons">
           <button onClick={handleOnAdd}>Add + </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Upload</button>
+          <button onClick={handleOnUpload}>Click to Conform</button>
         </div>
       </div>
-      <div class="ImagesShow">
+      <div className="ImagesShow">
         {resPhotos.map((image, index) => (
           <img
             className="Images"

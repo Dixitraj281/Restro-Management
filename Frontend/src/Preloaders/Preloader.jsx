@@ -9,7 +9,7 @@ const Preloader = () => {
    <>
     <div>
     
-      <h1 className='preload-title'>Cooking in progress..</h1>
+      <h1 className='preload-title'>Welcome Foodies...</h1>
       <div id="cooking">
         {/* Render bubble elements */}
         {bubbles}
