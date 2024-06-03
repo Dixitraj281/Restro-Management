@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "/Users/ayushsolanki/Desktop/cloned/Restro-Management/Frontend/src/Body/Admins/adminStyle.css";
+import "./adminStyle.css";
 
 const AddFoodPhotos = () => {
   const [foodPhotos, setfoodPhotos] = useState([]);
