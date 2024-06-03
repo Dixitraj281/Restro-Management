@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router
 import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
 import LoginReg from './UserBody/Login/LoginReg.jsx';
 import Preloader from './Preloaders/Preloader.jsx';
+import Admin from './Adminportal/Admins/Admin.jsx';
 
 function MainComponent() {
   // Using useLocation within the MainComponent
@@ -24,7 +25,7 @@ function MainComponent() {
     else if (location.pathname === '/admin') {
       return (
         <Routes>
-          <Route path="/admin" element={<Adminmain/>}/>
+          <Route path="/admin" element={<Admin/>}/>
         </Routes>
       );}
   else {

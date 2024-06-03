@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import '/Users/ayushsolanki/Desktop/cloned/Restro-Management/Frontend/src/Body/Admins/adminStyle.css';
 
 const AddMenuPhotos = (props) => {
   const [menuPhotos, setMenuPhotos] = useState([]);

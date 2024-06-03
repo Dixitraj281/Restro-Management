@@ -4,7 +4,9 @@ import AddCusines from "./AddCusines/AddCusines";
 import AddFoodPhotos from "./AddFoodPhotos";
 import AddMenuPhotos from "./AddMenuPhotos";
 import AddResPhotos from "./AddResPhotos";
+import axios from "axios";
 import { Checkmark } from "react-checkmark";
+
 
 const Admin = () => {
   const [hotelName, setHotelName] = useState("");
@@ -31,22 +33,9 @@ const Admin = () => {
   const [isCloseTime, setIsCloseTime] = useState(false);
   const [tableCap, setTableCap] = useState(0);
   const [isTableCap, setIsTableCap] = useState(false);
+   
 
-  const handleOnClick = (e) => {
-  
-    
-    console.log(hotelName);
-    console.log(description);
-    console.log(address);
-    console.log(cusines);
-    console.log(moreInfo);
-    console.log(foodImage);
-    console.log(menuImage);
-    console.log(resImage);
-    console.log(openTime);
-    console.log(closeTime);
-    console.log(tableCap);
-  };
+ 
   return (
     <>
       <div className="HotelName">

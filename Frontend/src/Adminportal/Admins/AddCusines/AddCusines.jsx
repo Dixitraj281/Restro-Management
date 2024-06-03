@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ToDoLists from "./ToDoList";
 import EnterItem from "./InputItem";
-import "/Users/ayushsolanki/Desktop/cloned/Restro-Management/Frontend/src/Body/Admins/AddCusines/cusineStyle.css";
+
 
 const AddCusines = (props) => {
   const [item, setItem] = useState("");
