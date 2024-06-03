@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Header.css';
 import { Link } from "react-router-dom";
 import { SearchOutlined, UserOutlined } from '@ant-design/icons';
-import { Input, Button } from "antd";
-import Search from '../Body/Search-By-Date/Search.jsx';
+import { Input } from "antd";
+// import Search from '../UserBody/Search-By-Date/Search.jsx';
 import rms from '../Assets/rms.png'
 
 function Header() {
@@ -17,6 +17,8 @@ function Header() {
     const handleSearchClick = () => {
         setShowSearch(!showSearch);
     }
+
+   
 
     return (
         <div className='header'>
@@ -39,13 +41,11 @@ function Header() {
             </div>
 
             <div className='header__right'>
-                <Button className='host-button' type="primary">Become a host</Button>
-                <Button className='search-button' onClick={handleSearchClick}>
-                    {showSearch ? "Hide" : "Search Dates"}
-                </Button>
+                {/* <Link to="/admin" className='user-admin-btn'>
+                <Button className='host-button' type="primary" >Become a host</Button>
+                </Link> */}
                 <UserOutlined />
             </div>
-            {showSearch && <Search />}
         </div>
     )
 }
