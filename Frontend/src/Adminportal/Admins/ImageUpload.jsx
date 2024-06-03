@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 
 const ImageUpload = (props) => {
-    const[url, setUrl] = useState("");
+    // const[url, setUrl] = useState("");
     const[image, setImage]= useState([]);
     const uploadImage = async(e)=>{
         
@@ -32,9 +32,9 @@ const handleOnClick = (e)=>{
     <>
     <h1>Upload Description Image</h1>
         <div className="UploadImage">
-            <input type='file' onChange={uploadImage}></input>
+            <input type='file' onChange={uploadImage} className="input-field"></input>
             {image && <p>Uploaded</p>}
-            <button onClick={handleOnClick}>Click to conform</button>
+            <button onClick={handleOnClick} className="Buttons">Click to confirm</button>
         </div>
     </>
   )

@@ -25,11 +25,11 @@ const AddResPhotos = (props) => {
     <>
       <div className="menuList">
       <h1>Add Restruant Photos</h1>
-        <input type="file" id="file_input_res"></input>
+        <input type="file" id="file_input_res" className="input-field"></input>
       <div className="Buttons">
-          <button onClick={handleOnAdd}>Add + </button>
+          <button onClick={handleOnAdd}>Add  </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click to Conform</button>
+          <button onClick={handleOnUpload}>Click to confirm</button>
         </div>
       </div>
       <div className="ImagesShow">

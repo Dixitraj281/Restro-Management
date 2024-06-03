@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
+=======
+import './adminStyle.css';
+>>>>>>> 183706b238c5711dd72153fceef86fb8cd8f54bf
 
 const AddMenuPhotos = (props) => {
   const [menuPhotos, setMenuPhotos] = useState([]);
@@ -25,11 +29,11 @@ const AddMenuPhotos = (props) => {
     <>
       <div className="menuList">
       <h1>Add Menu Photos</h1>
-        <input type="file" id="file_input_menu"></input>
+        <input type="file" id="file_input_menu" className="input-field"></input>
       <div className="Buttons">
-          <button onClick={handleOnAdd}>Add + </button>
+          <button onClick={handleOnAdd}>Add  </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click to Conform</button>
+          <button onClick={handleOnUpload}>Click to confirm</button>
         </div>
       </div>
       <div className="ImagesShow">

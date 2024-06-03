@@ -34,7 +34,7 @@ input {
   width: 100%;
 }
 
-button {
+/* button {
   background-color: #007BFF;
   color: white;
   border: none;
@@ -46,8 +46,8 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
-}
+  background-color: rgb(206, 203, 203);
+} */
 
 button.selected {
   background-color: #28a745;

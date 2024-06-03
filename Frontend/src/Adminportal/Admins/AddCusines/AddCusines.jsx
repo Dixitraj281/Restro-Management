@@ -2,8 +2,12 @@ import React from "react";
 import { useState } from "react";
 import ToDoLists from "./ToDoList";
 import EnterItem from "./InputItem";
+<<<<<<< HEAD
 
 
+=======
+import './cusineStyle.css'
+>>>>>>> 183706b238c5711dd72153fceef86fb8cd8f54bf
 const AddCusines = (props) => {
   const [item, setItem] = useState("");
   const [itemArr, setItemArr] = useState([]);
@@ -38,7 +42,7 @@ const AddCusines = (props) => {
       });
     }
   };
-  const handleOnConform = (e) => {
+  const handleOnconfirm = (e) => {
     props.a([...itemArr]);
     console.log("Cusine has been added");
   };
@@ -59,9 +63,9 @@ const AddCusines = (props) => {
           />
           <div className="Buttons">
             <button id="btn" onClick={ChangeValue}>
-              +
+              Add
             </button>
-            <button onClick={handleOnConform}>Click to conform</button>
+            <button onClick={handleOnconfirm}>Click to confirm</button>
           </div>
           <ol className="ListStyle">
             {itemArr.map((itemCur, index) => {
