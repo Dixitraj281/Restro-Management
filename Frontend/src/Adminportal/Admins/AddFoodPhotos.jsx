@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./adminStyle.css";
 
-const AddFoodPhotos = () => {
+const AddFoodPhotos = (props) => {
   const [foodPhotos, setfoodPhotos] = useState([]);
   const handleOnAdd = (e) => {
     const files = document.getElementById("file_input").files;
@@ -9,8 +9,10 @@ const AddFoodPhotos = () => {
     setfoodPhotos([...foodPhotos, ...fileArray]);
     document.getElementById("file_input").value = "";
   };
-  const handleOnUpload = () => {
+  const handleOnUpload = (e) => {
     // not implemented yet
+   props.a([...foodPhotos]);
+   console.log("Food photos have been uploaded successfully");
   };
   const handleOnDelete = () => {
     const newfoodPhotos = foodPhotos;
@@ -21,15 +23,15 @@ const AddFoodPhotos = () => {
     <>
       <div className="foodList">
         <h1>Add Food Photos</h1>
-        <input type="file" id="file_input"></input>
+        <input type="file" id="file_input" className="input-field"></input>
         <div className="Buttons">
-          <button onClick={handleOnAdd}>Add + </button>
+          <button onClick={handleOnAdd}>Add </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Upload</button>
+          <button onClick={handleOnUpload}>Click To confirm</button>
         </div>
         {/* <button onClick={handleOnUpload}>Upload </button> */}
       </div>
-      <div class="ImagesShow">
+      <div className="ImagesShow">
         {foodPhotos.map((image, index) => (
           <img
             className="Images"

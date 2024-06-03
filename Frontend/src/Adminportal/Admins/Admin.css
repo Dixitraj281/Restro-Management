@@ -1,136 +1,184 @@
-/* Admin.css */
-body {
-  font-family: Arial, sans-serif;
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 .admin-container {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(360deg, #fdfcfb 0%, #f9efe9 100%);
+}
+
+.admin-main-content {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 34px;
+  cursor: pointer;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  color: #333;
+}
+
+.sidebar-heading {
+  margin: 0;
+  padding: 20px;
+  font-size: 24px;
+  background: #FFFFFF;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #ccc;
 }
 
 .sidebar {
-  background-color: #343a40;
-  padding: 20px;
-  color: white;
+  width: 200px;
+  background: #FFFFFF;
+  color: #7196AA;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.sidebar.open {
+  transform: translateX(0);
+}
+
 .sidebar h2 {
-  font-size: 1.5em;
-  margin-bottom: 1em;
-  color: #ffffff;
+  width: 100%;
+  text-align: center;
 }
 
 .sidebar ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .sidebar ul li {
-  margin: 10px 0;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
 }
 
 .sidebar ul li a {
+  color: rgb(107, 114, 128);
   text-decoration: none;
-  color: #dcdcdc;
   display: block;
-  padding: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px 0;
+  transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .sidebar ul li a:hover {
-  background-color: #007bff;
-  color: white;
+  background: #f9efe9;
+  color: rgb(137, 136, 136);
+  transform: scale(1.05);
+  box-shadow: 0;
 }
 
 .content {
-  flex: 1;
+  flex-grow: 1;
   padding: 20px;
-  overflow-y: auto;
+  transition: margin-left 0.3s ease-in-out;
+  margin-left: 0;
+}
+
+.content.with-sidebar {
+  margin-left: 250px;
 }
 
 .section {
   margin-bottom: 20px;
 }
 
-.section h1 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-
 .input-field {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
+  margin: 10px 0;
   border-radius: 5px;
-  font-size: 1em;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+#description {
+  margin-right: 1rem;
+}
+
+.Buttons {
+  display: flex;
+  align-items: center;
+}
+
+.Buttons button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #3661EB;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Buttons button:hover {
+  background-color: #4d71ea;
 }
 
 .submit-button {
-  background-color: #007bff;
-  color: white;
+  padding: 10px 50px;
+  background-color: #3661EB;
+  color: #fff;
   border: none;
-  padding: 15px 30px;
-  cursor: pointer;
-  font-size: 1em;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 17px;
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+  background-color: #3661EB;
 }
 
-.add-restaurant-btn{
-   display: flex;
-  /*align-items: center;
-  justify-content: center; */
-  width: 100vw;
-  margin: auto;
+.checkmark {
+  display: inline-block;
+  margin-left: 10px;
 }
 
-@media (min-width: 768px) {
-  .admin-container {
-    flex-direction: row;
-  }
-
-  .sidebar {
-    width: 200px;
-    height: 100vh;
-  }
-
-  .content {
-    flex: 1;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .section {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .sidebar {
     width: 100%;
-    height: auto;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+    margin-left: 0;
+  }
+
+  .hamburger {
+    top: 15px;
+    left: 15px;
   }
 }

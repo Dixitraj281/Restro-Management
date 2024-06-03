@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 
-$anim_time: 2.1; // main pan/pancake animation (in seconds)
+$anim_time: 1.8; // main pan/pancake animation (in seconds)
 $flatten_deg: 85; // how round will the pancake be at the top/peak (in deg), affecting general animation though so not really adjustable
 $angle: 27; // max pan's angle while flipping (in deg)
 $peak: 40%; // pancake's highest level, obviously ;)
@@ -24,7 +24,7 @@ $color: #333; // the rest
   font-size: 6vh;
   color: $color;
   opacity: .75;
-  animation: pulse 2.5s linear infinite;
+  // animation: pulse 2.5s linear infinite;
 }
 
 #cooking {

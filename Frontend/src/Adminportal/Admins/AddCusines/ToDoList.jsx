@@ -1,18 +1,18 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 const ToDoLists = (props) => {
-  const [editInput, setEditInput] = useState("");
-  const [addInEdit, setAddInEdit] = useState({
-    show: false
-  });
+  // const [editInput, setEditInput] = useState("");
+  // const [addInEdit, setAddInEdit] = useState({
+  //   show: false
+  // });
 
-  const EditItem = () => {
-    console.log("edit");
-    setAddInEdit({ show: true });
-  };
-  const funEditUpdate = (event) => {
-    setEditInput(event.target.value.trim());
-  };
+  // const EditItem = () => {
+  //   console.log("edit");
+  //   setAddInEdit({ show: true });
+  // };
+  // const funEditUpdate = (event) => {
+  //   setEditInput(event.target.value.trim());
+  // };
   return (
     <>
       <div className="todo_style">
