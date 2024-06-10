@@ -3,11 +3,11 @@ import React from 'react';
 import './Restaurantdetails.css';
 import { Button } from "antd";
 
-const Restaurantdetails = () => {
+const Restaurantdetails = (props) => {
   return (
     <div className="restaurant-details-container">
       <div className="title-and-rating">
-        <div className="title">Raahi </div>
+        <div className="title">More</div>
         <div className="rating">4.3</div>
       </div>
       <div className="details">

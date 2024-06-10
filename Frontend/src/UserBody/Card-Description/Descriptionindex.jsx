@@ -15,6 +15,7 @@ import BookTable from './Restaurantsdetails/Restaurantbottom/Bottomlinks/BookTab
 
 
 const Descriptionindex = () => {
+  const [resData, setResData]=useState({});
   
   const sendRequestToBackend = async()=>{
     try{
@@ -29,6 +30,7 @@ const Descriptionindex = () => {
         }
       
         const data = await response.json();
+        setResData(data);
         return data;
     }
     catch(err){
@@ -48,8 +50,12 @@ const Descriptionindex = () => {
  
   useEffect(()=>{
     requestForData();
+    
 
   },[]);
+  useEffect(()=>{
+    setResData(resData);
+  },[resData]);
  
  
 
@@ -57,7 +63,7 @@ const Descriptionindex = () => {
     <>
     <div className='carousel-div'>
       <Carousel images={Images}/>
-      <Restaurantdetails/>
+      <Restaurantdetails details={resData}/>
       <Bottomnav/>
       <div className="content-div">
           <Routes>
