@@ -16,6 +16,7 @@ admin.use(bodyParser.urlencoded({extended:false}));
 
 
 admin.post('/addrestraunt', adminController.addRes);// post request to handle add res feature
+admin.get('/getResData/:resname',adminController.getResData);
 
 
 module.exports = admin;

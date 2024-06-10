@@ -1,4 +1,6 @@
 const addResModel = require("../models/addResModel");
+const restaurants = require('../models/addResModel');
+
 
 const addRes = async (req, res) => {
   console.log(req.body);
@@ -28,6 +30,23 @@ const addRes = async (req, res) => {
   }
 };
 
+const getResData = async(req, res)=>{
+   
+    const resName = req.params.resname;
+    try {
+     
+      const restaurant = await restaurants.findOne({ res_name: resName });
+      if (restaurant) {
+        res.send(restaurant);
+      } else {
+        res.status(404).json({ error: 'Restaurant not found' });
+      }
+    } catch (err) {
+      res.status(500).json({ error: 'Server error' });
+    }
+}
+
 module.exports = {
   addRes,
+  getResData
 };
