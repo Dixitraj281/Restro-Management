@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const mongoURL = "mongodb+srv://ayushmongo:user9876@cluster0.vbnfhte.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURL = "mongodb+srv://ayushmongo:user9876@cluster0.vbnfhte.mongodb.net/RestaurantManagementSystem";
 mongoose.connect(mongoURL);
 var connection=mongoose.connection
 connection.on('error',()=>{

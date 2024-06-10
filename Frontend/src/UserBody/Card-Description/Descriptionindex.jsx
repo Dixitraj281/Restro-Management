@@ -11,6 +11,8 @@ import Menu from './Restaurantsdetails/Restaurantbottom/Bottomlinks/Menu.jsx'
 import BookTable from './Restaurantsdetails/Restaurantbottom/Bottomlinks/BookTable.jsx'
 
 const Descriptionindex = () => {
+
+  
   return (
     <>
     <div className='carousel-div'>

@@ -8,7 +8,7 @@ const ImageUpload = (props) => {
         
         const files = e.target.files;
         const data = Array.from(files);
-        setImage([...image, data]);
+        setImage([...image, files[0]]);
         // const data = new FormData();
         // data.append('file', files[0]);
         // data.append('upload_preset', "res_img");

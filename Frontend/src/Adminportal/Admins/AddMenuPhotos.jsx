@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-=======
+
 import './adminStyle.css';
->>>>>>> 183706b238c5711dd72153fceef86fb8cd8f54bf
+
 
 const AddMenuPhotos = (props) => {
   const [menuPhotos, setMenuPhotos] = useState([]);
