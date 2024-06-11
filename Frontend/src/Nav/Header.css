@@ -30,7 +30,7 @@
 .header__right {
   display: flex;
   align-items: center;
-  margin-right: 10px; /* Adjust the margin */
+  margin-right: 30px; /* Adjust the margin */
 }
 
 .search-button {
@@ -46,6 +46,7 @@
   height: fit-content;
   width: fit-content;
 }
+
 
 @media (max-width: 768px) {
   .header {

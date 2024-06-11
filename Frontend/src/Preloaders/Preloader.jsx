@@ -7,7 +7,7 @@ const Preloader = () => {
   }
   return (
    <>
-    <div>
+    <div className='preload-body'>
     
       <h1 className='preload-title'>Welcome Foodies...</h1>
       <div id="cooking">

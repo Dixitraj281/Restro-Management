@@ -8,9 +8,15 @@ import { BrowserRouter as Router, Routes, Route, useLocation} from 'react-router
 import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
 import LoginReg from './UserBody/Login/LoginReg.jsx';
 import Preloader from './Preloaders/Preloader.jsx';
-import Admin from './Adminportal/Admins/Admin.jsx'
+import Admin from './Adminportal/Admins/Admin.jsx';
+import Profile from './UserBody/Profile/Profile.jsx'
+import Sidebar from './Adminportal/Admins/Sidebar/Sidebar.jsx';
 
 function MainComponent() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   // Using useLocation within the MainComponent
   const location = useLocation();
   console.log(location.pathname);
@@ -22,11 +28,15 @@ function MainComponent() {
         <Route path='/login' element={<LoginReg />} />
       </Routes>
     );}
-    else if (location.pathname === '/admin') {
+    else if (location.pathname === '/admin' || location.pathname === '/admin/profile') {
       return (
+        <>
+        <Sidebar isSidebarOpen={isSidebarOpen}/>
         <Routes>
           <Route path="/admin" element={<Admin/>}/>
+          <Route path='/admin/profile' element={<Profile/>} />
         </Routes>
+        </>
       );}
   else {
     return (
@@ -36,8 +46,8 @@ function MainComponent() {
           {/* User part */}
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="info/*" element={<Descriptionindex />} />
-          {/* <Route path="/login" element={<LoginReg />} /> */}
+          <Route path="/info/*" element={<Descriptionindex />} />
+          {/* <Route path='/profile' element={<Profile/>} /> */}
         </Routes>
         <Footer />
       </div>
