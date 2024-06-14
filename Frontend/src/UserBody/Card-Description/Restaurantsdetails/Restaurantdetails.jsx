@@ -3,17 +3,23 @@ import React from 'react';
 import './Restaurantdetails.css';
 import { Button } from "antd";
 
-const Restaurantdetails = () => {
+const Restaurantdetails = (props) => {
   return (
     <div className="restaurant-details-container">
       <div className="title-and-rating">
-        <div className="title">Raahi </div>
+        <div className="title">{props.details.res_name}</div>
         <div className="rating">4.3</div>
       </div>
       <div className="details">
-        <div className="cusine">North Indian, Pasta, Pizza, Desserts, Beverages</div>
-        <div className="address">St. Mark road</div>
-        <div className="timestatus"> <span className='status'>Open now</span> - <span className='status-timing'>12noon - 11:30pm</span></div>
+        <div className="cusine">{props.details.cusines && props.details.cusines.length > 0 ? (
+          props.details.cusines.map((cusine, index) => (
+            <span key={index}>{cusine} </span>
+          ))
+        ) : (
+          <p>No cuisines available</p>
+        )}</div>
+      <div className="address">{props.details.address}</div>
+        <div className="timestatus"> <span className='status'>{props.details.openTime}</span> - <span className='status-timing'>{props.details.closeTime}</span></div>
         <div className="extra-details">
                 <Button variant="outlined" className='extra-details-btn'>Direction</Button>
                 <Button variant="outlined" className='extra-details-btn'>Bookmark</Button>

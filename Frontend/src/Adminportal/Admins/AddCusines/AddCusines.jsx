@@ -60,7 +60,7 @@ const AddCusines = (props) => {
             <button id="btn" onClick={ChangeValue}>
               Add
             </button>
-            <button onClick={handleOnconfirm}>Click to confirm</button>
+            <button onClick={handleOnconfirm}>Confirm</button>
           </div>
           <ol className="ListStyle">
             {itemArr.map((itemCur, index) => {

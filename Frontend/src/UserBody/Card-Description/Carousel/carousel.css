@@ -1,3 +1,7 @@
+.slick-track {
+  display: flex;
+  align-items: center;
+}
 .slick-slide img {
   width: 100vw;
   max-height: 25vw;

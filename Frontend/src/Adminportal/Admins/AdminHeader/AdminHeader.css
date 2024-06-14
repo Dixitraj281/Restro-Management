@@ -4,11 +4,13 @@
   align-items: center;
   position: sticky;
   top: 0;
-  background-color: rgb(221, 219, 219);
+  background-color: white;
   z-index: 100;
-  width: 100%;
+  width: 95%;
   padding: 10px;
   border-radius: 10px;
+  font-family: "Segoe UI, Arial, Roboto, -apple-system, system-ui, Ubuntu, Helvetica Neue, sans-serif";
+  border: 1px solid rgb(173, 171, 171);
 }
 
 .admin-header__center {

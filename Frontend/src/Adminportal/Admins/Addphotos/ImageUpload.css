@@ -1,0 +1,19 @@
+/* Add this or modify the existing .Buttons class */
+.upload-Buttons {
+  background-color: #5dbea3;
+  color: white; /* Optional: to make the text color white */
+  border: none; /* Optional: to remove any border */
+  padding: 5px 5px; /* Optional: to add some padding */
+  border-radius: 5px; /* Optional: to add rounded corners */
+  cursor: pointer; /* Optional: to change the cursor on hover */
+}
+
+/* Optional: Add hover effect */
+.upload-Buttons:hover {
+  background-color: #33b249;
+}
+.uploaded-text{
+  color: #F2F2F2;
+  padding: 0;
+  margin: 0;
+}

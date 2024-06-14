@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./adminStyle.css";
 
+import "./adminStyle.css";
 const AddFoodPhotos = (props) => {
   const [foodPhotos, setfoodPhotos] = useState([]);
   const handleOnAdd = (e) => {
@@ -27,7 +27,7 @@ const AddFoodPhotos = (props) => {
         <div className="Buttons">
           <button onClick={handleOnAdd}>Add </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click To confirm</button>
+          <button onClick={handleOnUpload}>Confirm</button>
         </div>
         {/* <button onClick={handleOnUpload}>Upload </button> */}
       </div>

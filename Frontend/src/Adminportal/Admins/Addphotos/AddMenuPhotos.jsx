@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import './adminStyle.css';
+
 
 const AddMenuPhotos = (props) => {
   const [menuPhotos, setMenuPhotos] = useState([]);
@@ -30,7 +32,7 @@ const AddMenuPhotos = (props) => {
       <div className="Buttons">
           <button onClick={handleOnAdd}>Add  </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click to confirm</button>
+          <button onClick={handleOnUpload}>Confirm</button>
         </div>
       </div>
       <div className="ImagesShow">

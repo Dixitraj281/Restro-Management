@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import ImageUpload from "./Addphotos/ImageUpload.jsx";
+import React, { useState, useEffect } from "react";
+import ImageUpload from "././Addphotos/ImageUpload.jsx";
 import AddCusines from "./AddCusines/AddCusines";
 import AddFoodPhotos from "./Addphotos/AddFoodPhotos.jsx";
 import AddMenuPhotos from "./Addphotos/AddMenuPhotos.jsx";
 import AddResPhotos from "./Addphotos/AddResPhotos.jsx";
 import { Checkmark } from "react-checkmark";
-import './Admin.css';
-import AdminHeader from "./AdminHeader/AdminHeader";
-import Sidebar from "./Sidebar/Sidebar.jsx";  // Import the Sidebar component
+import "./Admin.css";
+// import AdminHeader from "./AdminHeader/AdminHeader";
+import axios from "axios";
+import AdminHeader from "./AdminHeader/AdminHeader.jsx";
 
-const Admin = () => {
+const Admin = ({ toggleSidebar, isSidebarOpen }) => {
   const [hotelName, setHotelName] = useState("");
   const [isHotelName, setIsHotelName] = useState(false);
   const [description, setDescription] = useState("");
   const [isDescription, setIsDescription] = useState(false);
-  const [desImage, setDesImage] = useState("");
+  const [desImage, setDesImage] = useState([]);
   const [cusines, setCusines] = useState([]);
   const [address, setAddress] = useState("");
   const [isAddress, setIsAddress] = useState(false);
@@ -29,17 +30,62 @@ const Admin = () => {
   const [tableCap, setTableCap] = useState(0);
   const [isTableCap, setIsTableCap] = useState(false);
 
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [desUrls, setDesUrls] = useState([]);
+  const [desLoad, setDesLoad] = useState(false);
+  const [foodUrls, setFoodUrls] = useState([]);
+  const [foodLoad, setFoodLoad] = useState(false);
+  const [menuUrls, setMenuUrls] = useState([]);
+  const [menuLoad, setMenuLoad] = useState(false);
+  const [resUrls, setResUrls] = useState([]);
+  const [resLoad, setResLoad] = useState(false);
+  const [active, setActive] = useState(false);
+  const [dataSent, setDataSent] = useState(false);
+  var totalPhotosUploaded = 0,
+    totalPhotosSent = 0;
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const uploadImagesToCloudinary = async (imageArr) => {
+    if (imageArr.length === 0) return [];
+    console.log("inside enter1");
+    const newUrls = [];
+    for (const file of imageArr) {
+      console.log("3rd inside enter");
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "res_img");
+      data.append("cloud_name", "dzeaake8o");
+
+      try {
+        const res = await axios.post(
+          "https://api.cloudinary.com/v1_1/dzeaake8o/image/upload",
+          data
+        );
+        console.log("hello data ", res.data.secure_url);
+        newUrls.push(res.data.secure_url);
+      } catch (err) {
+        console.error("Error uploading file:", err);
+      }
+    }
+
+    return newUrls;
+  };
+
+  const ImageUploaderFunction = (imageArr) => {
+    console.log("1st inside enter");
+    const uploadImages = async () => {
+      console.log("2nd inside enter");
+
+      const uploadedUrls = await uploadImagesToCloudinary(imageArr);
+      return uploadedUrls;
+    };
+    return uploadImages();
   };
 
   const handleOnClick = () => {
     console.log(hotelName);
     console.log(description);
-    console.log(address);
+    console.log(desImage);
     console.log(cusines);
+    console.log(address);
     console.log(moreInfo);
     console.log(foodImage);
     console.log(menuImage);
@@ -47,15 +93,122 @@ const Admin = () => {
     console.log(openTime);
     console.log(closeTime);
     console.log(tableCap);
-    console.log(desImage);
+    // first i need to get all the images url for desImage which will store in another array desurls
+    try {
+      const handleUpload = async (desImage, num) => {
+        const temp = await ImageUploaderFunction(desImage);
+        if (num == 1) {
+          setDesUrls(temp);
+          setDesLoad(true);
+        } else if (num == 2) {
+          setFoodUrls(temp);
+          setFoodLoad(true);
+        } else if (num == 3) {
+          setMenuUrls(temp);
+          setMenuLoad(true);
+        } else if (num == 4) {
+          setResUrls(temp);
+          setResLoad(true);
+        }
+      };
+      const uploadAllPhotosAndDocument = async () => {
+        await handleUpload(desImage, 1);
+        await handleUpload(foodImage, 2);
+        await handleUpload(menuImage, 3);
+        await handleUpload(resImage, 4);
+      };
+
+      uploadAllPhotosAndDocument();
+      setActive(true);
+    } catch (err) {
+      setActive(false);
+      console.log("Images were not successfully stored!!");
+    }
   };
 
+  const sendDataToBackend = async () => {
+    console.log("hey data is getting sent");
+    const data = {
+      hotelName,
+      description,
+      desUrls,
+      cusines,
+      address,
+      moreInfo,
+      foodUrls,
+      menuUrls,
+      resUrls,
+      openTime,
+      closeTime,
+      tableCap,
+    };
+
+    try {
+      const response = await fetch("http://localhost:4500/admin/addrestraunt", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      setDataSent(true);
+    } catch (err) {
+      console.error("Error sending data to backend:", err);
+    }
+  };
+
+  useEffect(() => {
+    // This effect runs when any of the URLs are updated
+    setDesUrls(desUrls);
+    setFoodUrls(foodUrls);
+    setMenuUrls(menuUrls);
+    setResUrls(resUrls);
+    setDesLoad(desLoad);
+    setFoodLoad(foodLoad);
+    setMenuLoad(menuLoad);
+    setResLoad(resLoad);
+    setActive(active);
+    totalPhotosSent =
+      desUrls.length + foodUrls.length + menuUrls.length + resUrls.length;
+    if (
+      desLoad == true &&
+      foodLoad == true &&
+      menuLoad == true &&
+      resLoad == true &&
+      active == true
+    ) {
+      console.log("we are sending the data");
+      totalPhotosUploaded =
+        desImage.length + foodImage.length + menuImage.length + resImage.length;
+      console.log(totalPhotosSent, totalPhotosUploaded);
+
+      if (totalPhotosSent === totalPhotosUploaded) sendDataToBackend();
+    }
+    console.log("Updated desUrls:", desUrls);
+    console.log("Updated foodUrls:", foodUrls);
+    console.log("Updated menuUrls:", menuUrls);
+    console.log("Updated resUrls:", resUrls);
+  }, [
+    desUrls,
+    foodUrls,
+    menuUrls,
+    resUrls,
+    desLoad,
+    foodLoad,
+    menuLoad,
+    resLoad,
+    active,
+  ]);
+
+  useEffect(() => {
+    setDataSent(dataSent);
+  }, [dataSent]);
+
   return (
-    <div className="admin-container">
-      <Sidebar isSidebarOpen={isSidebarOpen} />  {/* Use the Sidebar component */}
+    <div className="admin-container"> 
       <div className="admin-main-content">
         <div className={`content ${isSidebarOpen ? "with-sidebar" : "full-width"}`}>
-          <AdminHeader toggleSidebar={toggleSidebar} />
+        <AdminHeader toggleSidebar={toggleSidebar}/>
           <section id="hotelName" className="section">
             <h1>Restaurant Name</h1>
             <input
@@ -66,12 +219,12 @@ const Admin = () => {
               onChange={(e) => setHotelName(e.target.value)}
             />
             <div className="Buttons">
-              <button onClick={() => setIsHotelName(true)}>Click to confirm</button>
+              <button onClick={() => setIsHotelName(true)}>Confirm</button>
               {isHotelName && hotelName.length !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
             </div>
           </section>
 
-          <section id="description" className="section">
+          <section className="section">
             <h1>Enter description</h1>
             <textarea
               required
@@ -80,7 +233,7 @@ const Admin = () => {
               onChange={(e) => setDescription(e.target.value)}
             />
             <div className="Buttons">
-              <button onClick={() => setIsDescription(true)}>Click to confirm</button>
+              <button onClick={() => setIsDescription(true)}>Confirm</button>
               {isDescription && description.length !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
             </div>
           </section>
@@ -103,7 +256,7 @@ const Admin = () => {
               onChange={(e) => setAddress(e.target.value)}
             />
             <div className="Buttons">
-              <button onClick={() => setIsAddress(true)}>Click to confirm</button>
+              <button onClick={() => setIsAddress(true)}>Confirm</button>
               {isAddress && address.length !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
             </div>
           </section>
@@ -130,7 +283,7 @@ const Admin = () => {
                 />
               </div>
               <div className="Buttons">
-                <button onClick={() => setIsOpenTime(true)}>Click to confirm</button>
+                <button onClick={() => setIsOpenTime(true)}>Confirm</button>
                 {isOpenTime && openTime.length !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
               </div>
             </div>
@@ -146,7 +299,7 @@ const Admin = () => {
                 />
               </div>
               <div className="Buttons">
-                <button onClick={() => setIsCloseTime(true)}>Click to confirm</button>
+                <button onClick={() => setIsCloseTime(true)}>Confirm</button>
                 {isCloseTime && closeTime.length !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
               </div>
             </div>
@@ -163,7 +316,7 @@ const Admin = () => {
               />
             </div>
             <div className="Buttons">
-              <button onClick={() => setIsTableCap(true)}>Click to confirm</button>
+              <button onClick={() => setIsTableCap(true)}>Confirm</button>
               {isTableCap && tableCap !== 0 && <Checkmark className="checkmark" size="20px" width="30px" />}
             </div>
           </section>
@@ -175,6 +328,7 @@ const Admin = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

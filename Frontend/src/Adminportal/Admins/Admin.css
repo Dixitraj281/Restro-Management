@@ -11,7 +11,7 @@ html, body {
   flex-direction: row;
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(360deg, #fdfcfb 0%, #f9efe9 100%);
+  background-image: linear-gradient(360deg, rgba(253, 252, 251, 0.824) 0%, #F2F2F2 100%);
 }
 
 .admin-main-content {
@@ -56,7 +56,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); */
 }
 
 .sidebar.open {
@@ -94,7 +94,7 @@ html, body {
   background: #f9efe9;
   color: rgb(137, 136, 136);
   transform: scale(1.05);
-  box-shadow: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .content {
@@ -109,12 +109,14 @@ html, body {
 }
 
 .section {
-  margin-bottom: 20px;
+  margin: 0 10rem 1rem 10rem;
+
 }
 
 .input-field {
   width: 100%;
-  padding: 10px;
+  /* padding: 10px; */
+  /* text-align: center; */
   margin: 10px 0;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -133,7 +135,7 @@ html, body {
 .Buttons button {
   margin-right: 10px;
   padding: 5px 10px;
-  background-color: #3661EB;
+  background-color: #5dbea3;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -141,12 +143,12 @@ html, body {
 }
 
 .Buttons button:hover {
-  background-color: #4d71ea;
+  background-color: #33b249;
 }
 
 .submit-button {
   padding: 10px 50px;
-  background-color: #3661EB;
+  background-color: #33b249;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -155,7 +157,7 @@ html, body {
 }
 
 .submit-button:hover {
-  background-color: #3661EB;
+  background-color:  #5dbea3;
 }
 
 .checkmark {
