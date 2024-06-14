@@ -102,6 +102,7 @@ const BookTable = () => {
         setConfirmation(
           `Thank you, ${formData.name}! Your table for ${formData.guests} on ${formData.date} at ${formData.time} for ${formData.meal} has been booked with ${formData.offer}.`
         );
+        console.log(formData);
       } else {
         console.error("Booking failed:", bookTableStatus.error);
       }
