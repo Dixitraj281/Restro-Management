@@ -23,7 +23,7 @@ function MainComponent() {
   console.log(location.pathname);
 
   // Conditional rendering based on location.pathname
-  if (location.pathname === '/login') {
+  if (location.pathname.startsWith === '/login') {
     return (
       <Routes>
         <Route path='/login' element={<LoginReg />} />
@@ -37,7 +37,7 @@ function MainComponent() {
         <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />      
           <Routes>
             <Route path="/admin" element={<Admin toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>} />
-            <Route path='/admin/profile' element={<Profile />} />
+            <Route path='/admin/profile' element={<Profile toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>} />
           </Routes>
         </div>
       </>
