@@ -1,4 +1,5 @@
 const User = require('../models/UserModel');
+const Order = require('../models/ordersModel');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
@@ -124,8 +125,35 @@ const homeupload = (req, res)=>{
 }
 const bookTable = async (req, res)=>{
     console.log("bookTable api has been hit");
-    const details = req.body;
-    res.status(200).send("Thank you for booking");
+    const details = req.body;// here we have recieved the data
+    // next step is to send this data to backend and store it
+    try{
+    const newOrder = new Order({
+        userName: details.userName,
+        res_name: details.name,
+        mobNo: details.phone,
+        noOfGuest: details.guests ,
+        meal: details.meal,
+        timing:details.time ,
+        applicableOffer: details.offer,
+        date:details.date
+    });
+    const orderData = await newOrder.save();
+    if(orderData){
+        res.status(200);
+        console.log("ordered successfully");
+        res.end();
+    }
+    else {
+        res.status(500);
+        throw new Error("registration Failed");
+    }
+    }catch(err){
+        console.log(err);
+
+    }
+
+  
 
 }
 
