@@ -12,8 +12,9 @@ import "./BookingForm.css";
 
 const BookTable = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
+    userName:"Ayush",
+    name: "Udupi",
+    phone: "8291441089",
     date: "",
     time: "",
     guests: 1,
@@ -60,9 +61,11 @@ const BookTable = () => {
     });
   };
 
+
   const bookTable = async (details) => {
+    console.log(details);
     try {
-      const response = await fetch("http://localhost:4500/booktable", {
+      const response = await fetch("http://localhost:4500/booktable/Udupi", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

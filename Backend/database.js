@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const mongoURL = "mongodb+srv://ayushmongo:user9876@cluster0.vbnfhte.mongodb.net/RestaurantManagementSystem";
+const mongoURL = "mongodb://localhost:27017/RestaurantManagementSystem";
 mongoose.connect(mongoURL);
 var connection=mongoose.connection
 connection.on('error',()=>{
