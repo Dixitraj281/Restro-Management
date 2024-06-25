@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +11,14 @@ import profile from "../../Assets/Subtract.svg";
 import AdminHeader from "../../Adminportal/Admins/AdminHeader/AdminHeader";
 
 const Profile = ({ toggleSidebar, isSidebarOpen }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [profileDetails, setProfileDetails] = useState({
+    username: "Julia Smith",
+    designation: "User",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  });
+
   useEffect(() => {
     function addAnimToLinks() {
       let accountLinks = document.querySelector(".profile-accounts").children;
@@ -22,30 +30,72 @@ const Profile = ({ toggleSidebar, isSidebarOpen }) => {
     addAnimToLinks();
   }, []);
 
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileDetails({
+      ...profileDetails,
+      [name]: value,
+    });
+  };
+
+  const handleSave = () => {
+    // Add your save logic here (e.g., API call to save the details)
+    setIsEditing(false);
+  };
+
   return (
     <div className={`content ${isSidebarOpen ? "with-sidebar" : "full-width"}`}>
       <AdminHeader toggleSidebar={toggleSidebar} />
       <div className="profile-body">
         <div className="profile-wrapper">
           <div className="profile-image">
-            <img src={profile} alt="Julia Smith" />
+            <img src={profile} alt="Profile" />
             <span className="profile-status">online</span>
             <div className="temp-overlay one"></div>
             <div className="temp-overlay two"></div>
           </div>
-          <div className="profile-username">
-            <span id="profile-username-first">J</span>
-            <span id="profile-username-second">S</span>
-          </div>
-          <div className="profile-intro">
-            <span className="profile-intro-designation">User</span>
-            <div className="profile-intro-description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+          {isEditing ? (
+            <div className="profile-edit-form">
+              <input
+                type="text"
+                name="username"
+                value={profileDetails.username}
+                onChange={handleInputChange}
+              />
+              <input
+                type="text"
+                name="designation"
+                value={profileDetails.designation}
+                onChange={handleInputChange}
+              />
+              <textarea
+                name="description"
+                value={profileDetails.description}
+                onChange={handleInputChange}
+              />
+              <button onClick={handleSave}>Save</button>
+              <button onClick={handleEditToggle}>Cancel</button>
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="profile-username">
+                <span>{profileDetails.username}</span>
+              </div>
+              <div className="profile-intro">
+                <span className="profile-intro-designation">
+                  {profileDetails.designation}
+                </span>
+                <div className="profile-intro-description">
+                  {profileDetails.description}
+                </div>
+              </div>
+              <button onClick={handleEditToggle}>Edit Profile</button>
+            </>
+          )}
           <div className="profile-accounts">
             <a href="#" className="profile-account-link">
               <FontAwesomeIcon icon={faInstagram} size="2x" />

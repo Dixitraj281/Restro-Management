@@ -8,13 +8,14 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Descriptionindex from './UserBody/Card-Description/Descriptionindex.jsx';
 import LoginReg from './UserBody/Login/LoginReg.jsx';
 import Preloader from './Preloaders/Preloader.jsx';
-import Admin from './Adminportal/Admins/Admin.jsx';
+import Admin from './Adminportal/Admin.jsx';
 import Profile from './UserBody/Profile/Profile.jsx';
 import Sidebar from './Adminportal/Admins/Sidebar/Sidebar.jsx';
-import AdminHeader from './Adminportal/Admins/AdminHeader/AdminHeader.jsx';
+import Order from './Adminportal/Order/Order.jsx';
+import SubscriptionForm from './Adminportal/Admins/Subscription/Subscription.jsx';
 
 function MainComponent() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -38,6 +39,8 @@ function MainComponent() {
           <Routes>
             <Route path="/admin" element={<Admin toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>} />
             <Route path='/admin/profile' element={<Profile toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>} />
+            <Route path='/admin/orders' element={<Order toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>}/>
+            <Route path='/admin/subscription' element={<SubscriptionForm toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}/>}/>
           </Routes>
         </div>
       </>

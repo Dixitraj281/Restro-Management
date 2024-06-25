@@ -10,6 +10,7 @@
   justify-content: center;
   align-items: center;
   font-family: 'Be Vietnam', sans-serif;
+  
 }
 
 #green-header {
@@ -62,7 +63,7 @@
 }
 
 .temp-overlay.two {
-  background-color: #21e7b6;
+  background-color: rgb(200, 198, 198);
   animation: goDownOverlay 2s ease-in-out 1s both;
 }
 
@@ -70,7 +71,7 @@
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  color: #21e7b6;
+  color: #11C056;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 1px;
@@ -83,7 +84,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #21e7b6;
+  background-color: #11C056;
   margin-bottom: -2px;
   margin-left: 5px;
 }
@@ -112,7 +113,7 @@
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  color: #21e7b6;
+  color: white;
   letter-spacing: 2px;
   padding-bottom: 0.5rem;
 }
@@ -173,8 +174,86 @@
 }
 
 .profile-account-link:hover {
-  color: #21e7b6;
+  color: white;
 }
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.edit-icon:hover {
+  color: #007bff;
+}
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-input,
+.profile-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.profile-input {
+  height: 40px;
+}
+
+.profile-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.profile-edit-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profile-save-button,
+.profile-cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-save-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.profile-cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
 
 @media screen and (min-width: 500px) {
   .profile-wrapper {

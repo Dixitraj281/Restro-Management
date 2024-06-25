@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import ImageUpload from "././Addphotos/ImageUpload.jsx";
-import AddCusines from "./AddCusines/AddCusines";
-import AddFoodPhotos from "./Addphotos/AddFoodPhotos.jsx";
-import AddMenuPhotos from "./Addphotos/AddMenuPhotos.jsx";
-import AddResPhotos from "./Addphotos/AddResPhotos.jsx";
+import ImageUpload from "./Admins/Addphotos/ImageUpload.jsx";
+import AddCusines from "./Admins/AddCusines/AddCusines.jsx";
+import AddFoodPhotos from "./Admins/Addphotos/AddFoodPhotos.jsx";
+import AddMenuPhotos from "./Admins/Addphotos/AddMenuPhotos.jsx";
+import AddResPhotos from "./Admins/Addphotos/AddResPhotos.jsx";
 import { Checkmark } from "react-checkmark";
 import "./Admin.css";
-// import AdminHeader from "./AdminHeader/AdminHeader";
 import axios from "axios";
-import AdminHeader from "./AdminHeader/AdminHeader.jsx";
+import AdminHeader from "./Admins/AdminHeader/AdminHeader.jsx";
 
 const Admin = ({ toggleSidebar, isSidebarOpen }) => {
   const [hotelName, setHotelName] = useState("");
