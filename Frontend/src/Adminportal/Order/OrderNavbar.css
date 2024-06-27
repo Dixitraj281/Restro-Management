@@ -1,0 +1,43 @@
+/* src/components/OrderNavbar.css */
+.navbar {
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.link-box{
+  background-color: rgb(229, 229, 229);
+  /* padding: 10px; */
+  border-radius: 15px;
+  border: 1px solid rgb(192, 192, 192);
+  box-shadow: #000;
+
+}
+
+.navbar .link {
+  text-decoration: none;
+  color: gray;
+  padding: 0.5em 1em;
+  border-radius: 15px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .link:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar .link.active {
+  background-color: white;
+  color: gray;
+  font-weight: bold;
+}

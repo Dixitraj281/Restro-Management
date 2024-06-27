@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css?family=Be+Vietnam:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+
+.profile-body {
+  height: 100vh;
+  background-color: #F8F9FA;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Be Vietnam', sans-serif;
+  
+}
+
+#green-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20vh;
+  width: 100vw;
+  background-color: #21e7b6;
+  z-index: -1;
+}
+
+.profile-wrapper {
+  background-color: #3b3c50;
+  height: 80vh;
+  width: 90vw;
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  position: relative;
+  display: flex;
+  width: 70vw;
+  max-width: 200px;
+  margin-top: -5vh;
+  box-sizing: border-box;
+  border-bottom: 1px solid #7e8288;
+  box-shadow: 0px 0px 10px 0 rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+}
+
+.profile-image img {
+  width: 100%;
+}
+
+.temp-overlay {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}
+
+.temp-overlay.one {
+  background-color: #343546;
+  animation: goUpOverlay 2s ease-in-out 1s both;
+}
+
+.temp-overlay.two {
+  background-color: rgb(200, 198, 198);
+  animation: goDownOverlay 2s ease-in-out 1s both;
+}
+
+.profile-status {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #11C056;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+.profile-status::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #11C056;
+  margin-bottom: -2px;
+  margin-left: 5px;
+}
+
+.profile-username {
+  font-family: 'Permanent Marker', cursive;
+  color: white;
+  font-size: 24px;
+  letter-spacing: 5px;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#break-username {
+  display: none;
+}
+
+.profile-intro {
+  padding: 0rem 1rem 1rem 1rem;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.profile-intro-designation {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 2px;
+  padding-bottom: 0.5rem;
+}
+
+.profile-intro-description {
+  font-size: 10px;
+  color: #7e8288;
+  line-height: normal;
+  text-align: justify;
+  max-width: 300px;
+}
+
+.profile-stats {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-stat {
+  line-height: 1;
+}
+
+.profile-stat:nth-child(2) {
+  padding: 0 5%;
+  margin: 0 5%;
+  border-left: 1px solid #7e8288;
+  border-right: 1px solid #7e8288;
+}
+
+.profile-stat-title {
+  color: white;
+  font-size: 12px;
+}
+
+.profile-stat-value {
+  color: #21e7b6;
+  font-size: 20px;
+}
+
+.profile-accounts {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0px -2px 5px -3px rgba(0, 0, 0, 0.75);
+  background-color: #343546;
+}
+
+.profile-account-link {
+  text-decoration: none;
+  color: #7e8288;
+  cursor: pointer;
+}
+
+.profile-account-link:hover {
+  color: white;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.edit-icon:hover {
+  color: #007bff;
+}
+
+.profile-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-input,
+.profile-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.profile-input {
+  height: 40px;
+}
+
+.profile-textarea {
+  height: 100px;
+  resize: none;
+}
+
+.profile-edit-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.profile-save-button,
+.profile-cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-save-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.profile-cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+
+@media screen and (min-width: 500px) {
+  .profile-wrapper {
+    width: 70vw;
+  }
+  .profile-username {
+    font-size: 36px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .profile-wrapper {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .profile-wrapper {
+    width: 30vw;
+  }
+}
+
+@keyframes goDownOverlay {
+  0% {
+    transform: translate3d(-50px, -50px, 0) rotate(45deg);
+  }
+  100% {
+    transform: rotate(45deg) translate3d(4000px, -50px, 0);
+  }
+}
+
+@keyframes goUpOverlay {
+  0% {
+    transform: translate3d(-50px, -50px, 0) rotate(-135deg);
+  }
+  100% {
+    transform: rotate(-135deg) translate3d(4000px, -50px, 0);
+  }
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0);
+  }
+  70% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

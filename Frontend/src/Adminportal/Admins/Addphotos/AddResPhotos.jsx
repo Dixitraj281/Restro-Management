@@ -29,7 +29,7 @@ const AddResPhotos = (props) => {
       <div className="Buttons">
           <button onClick={handleOnAdd}>Add  </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click to confirm</button>
+          <button onClick={handleOnUpload}>Confirm</button>
         </div>
       </div>
       <div className="ImagesShow">

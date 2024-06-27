@@ -27,7 +27,7 @@ const AddFoodPhotos = (props) => {
         <div className="Buttons">
           <button onClick={handleOnAdd}>Add </button>
           <button onClick={handleOnDelete}>Delete</button>
-          <button onClick={handleOnUpload}>Click To confirm</button>
+          <button onClick={handleOnUpload}>Confirm</button>
         </div>
         {/* <button onClick={handleOnUpload}>Upload </button> */}
       </div>

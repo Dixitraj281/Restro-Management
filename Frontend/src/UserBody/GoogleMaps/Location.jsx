@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScriptNext, Marker } from '@react-google-maps/api';
 import "./location.css"
 
-const Location = () => {
-  const [address, setAddress] = useState('');
+const Location = ({ address }) => {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState('');
-
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-    console.log(address);
-  };
 
   const handleGeocode = async () => {
     const apiKey = 'AIzaSyDnInA_iYp2HPPe5OmAHETryfoEmeFvl0Y'; 
@@ -40,25 +34,24 @@ const Location = () => {
     }
   };
 
+  useEffect(() => {
+    if (address) {
+      handleGeocode();
+    }
+  }, [address]);
+
   return (
     <div className='googlemap'>
-      <input
-        type="text"
-        value={address}
-        onChange={handleAddressChange}
-        placeholder="Enter address"
-      />
-      <button onClick={handleGeocode}>Get Geolocation</button>
       {location && (
-        <LoadScript googleMapsApiKey="AIzaSyDnInA_iYp2HPPe5OmAHETryfoEmeFvl0Y">
+        <LoadScriptNext googleMapsApiKey="AIzaSyDnInA_iYp2HPPe5OmAHETryfoEmeFvl0Y">
           <GoogleMap
-            mapContainerStyle={{ width: '100%', height: '100%' }}
+            mapContainerStyle={{ width: '100%', height: '400px' }}
             center={location}
             zoom={15}
           >
             <Marker position={location} />
           </GoogleMap>
-        </LoadScript>
+        </LoadScriptNext>
       )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>

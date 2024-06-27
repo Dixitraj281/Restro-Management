@@ -1,0 +1,221 @@
+.subscription-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.subscription-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.subscription-description {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.subscription-form {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .subscription-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.select-plan, .payment-section {
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.plan-duration, .payment-method {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.duration-button, .method-button {
+  padding: 10px 20px;
+  background-color: #e7e8e7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.duration-button.active, .method-button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.plan {
+  padding: 20px;
+  border: 2px solid #e7e8e7;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: border-color 0.3s;
+}
+
+.plan.selected {
+  border-color: #007bff;
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.plan-details {
+  list-style: none;
+  padding: 0;
+  color: #666;
+}
+
+.user-count {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.user-button {
+  padding: 5px 10px;
+  background-color: #e7e8e7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.card {
+  width: 300px; /* Adjust width based on your design */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: inline-block;
+  margin: 20px;
+}
+
+.card-body {
+  position: relative;
+}
+
+.card-image {
+  width: 60px; /* Adjust size based on your design */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card-number {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.edit-card {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.add-card-button {
+  padding: 10px;
+  background-color: #e7e8e7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.add-card-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.discount-code {
+  margin-top: 20px;
+}
+
+.discount-input {
+  display: flex;
+  margin-top: 10px;
+}
+
+.discount-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #e7e8e7;
+  border-radius: 5px 0 0 5px;
+}
+
+.apply-button {
+  padding: 13px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 100%; /* Ensure button height matches input height */
+  box-sizing: border-box; /* Include padding and border in button's total height */
+}
+
+
+.apply-button:hover {
+  background-color: #0056b3;
+}
+
+.discount-success {
+  color: #28a745;
+  margin-top: 10px;
+}
+
+.summary {
+  margin-top: 20px;
+}
+
+.summary-item, .summary-total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.proceed-payment-button {
+  padding: 15px 30px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.proceed-payment-button:hover {
+  background-color: #0056b3;
+}
