@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css';
 import Banner from './Home-Banner/Banner.jsx'
 import cardData from './Carddata.json';
-import Card from './Card/Card.jsx' 
+import RestaurantCard from './Card/Card.jsx' 
 import Chooseus from './Home-Banner/Chooseus.jsx';
 
 function Home() {
@@ -13,7 +13,7 @@ function Home() {
             <h1>Bangalore Restaurants</h1>
             <div className='home__section'>
             {cardData.map((card, index) => (
-                <Card
+                <RestaurantCard
                     key={index}
                     src={card.src}
                     title={card.title}

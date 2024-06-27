@@ -1,37 +1,7 @@
-/* Add this CSS in your stylesheet or a style tag */
-.photocard-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1px; /* Adjust the gap between cards */
-}
-
 .photocard {
-  flex: 1 1 calc(20% - 32px); /* Four cards per row with some margin */
-  box-sizing: border-box;
-  max-width: calc(20% - 32px);
+  transition: all 500ms ease-in-out;
 }
-
-
-
-/* Responsive adjustments */
-@media (max-width: 1200px) {
-  .photocard {
-    flex: 1 1 calc(33.33% - 32px); /* Three cards per row */
-    max-width: calc(33.33% - 32px);
-  }
-}
-
-@media (max-width: 900px) {
-  .photocard {
-    flex: 1 1 calc(50% - 32px); /* Two cards per row */
-    max-width: calc(50% - 32px);
-  }
-}
-
-@media (max-width: 600px) {
-  .photocard {
-    flex: 1 1 calc(100% - 32px); /* One card per row */
-    max-width: calc(100%);
-  }
+.photocard-item:hover{
+  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+  transform: scale(1.05);
 }

@@ -21,7 +21,7 @@ function Card({ src, title, cusine, price, location, opentime, closetime }) {
                 <div class="sc-1q7bklc-6 liCXOR">
                   <div class="sc-1q7bklc-5 kHxpSk">
                     <div class="sc-1q7bklc-2 pxJGx">
-                      <i class="sc-rbbb40-1 iFnyeo" color="#FFFFFF">
+                      <i class="sc-rbbb40-1 iFnyeo" >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="#FFFFFF"
@@ -51,7 +51,7 @@ function Card({ src, title, cusine, price, location, opentime, closetime }) {
           <p class="card-location">{location}</p>
           <p class="card-km">1.7 km</p>
         </div>
-        <hr/>
+        <hr className="line-bar"/>
         <div className="card-section">
         <h3 className="card__opentime">{opentime}</h3>
         <h3 className="card__closetime">{closetime}</h3>
