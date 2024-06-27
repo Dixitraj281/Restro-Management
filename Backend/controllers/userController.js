@@ -1,5 +1,6 @@
 const User = require('../models/UserModel');
 const Order = require('../models/ordersModel');
+const Res = require('../models/addResModel');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
@@ -152,8 +153,25 @@ const bookTable = async (req, res)=>{
         console.log(err);
 
     }
+}
+const allRes = async(req, res)=>{
+    console.log("res api has been hit");
+    try{
+        const response = await Res.find();
+        if(response){
+            res.send(response);
+        }
+        else{
+            throw new Error("Collection with this name does not exist in the mongodb");
+        }
 
-  
+    }
+    catch(err){
+        console.log("HTTP server error! unable to connect to mongodb");
+    }
+      
+
+
 
 }
 
@@ -161,5 +179,6 @@ const bookTable = async (req, res)=>{
 module.exports = {
     insertUser,
     homeupload,
-    bookTable
+    bookTable,
+    allRes
 }

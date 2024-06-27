@@ -2,13 +2,13 @@ import {React} from "react";
 import {Link} from 'react-router-dom'
 import "./Card.css";
 
-function Card({ src, title, cusine, price, location, opentime, closetime }) {
+function Card(props) {
   return (
     <Link className="card" to='/info'>
-      <img src={src} alt="" className="card-img" />
+      <img src={props.img} alt="" className="card-img" />
       <div className="card__info">
         <div class="card-section">
-          <h4 class="hArupt">{title}</h4>
+          <h4 class="hArupt">{props.res_name}</h4>
           <div class="sc-ljUfdc kDXOLl">
             <div class="sc-1q7bklc-5 kHxpSk">
               <div
@@ -44,17 +44,17 @@ function Card({ src, title, cusine, price, location, opentime, closetime }) {
           </div>
         </div>
         <div class="card-section">
-          <p class="sc-1hez2tp-0 sc-iEPtyo bHxcOC">{cusine}</p>
-          <p class="sc-1hez2tp-0 sc-iEPtyo dJHUYi">{price}</p>
+          <p class="sc-1hez2tp-0 sc-iEPtyo bHxcOC">cusine</p>
+          <p class="sc-1hez2tp-0 sc-iEPtyo dJHUYi">1500$</p>
         </div>
         <div class="card-section">
-          <p class="card-location">{location}</p>
+          <p class="card-location">location</p>
           <p class="card-km">1.7 km</p>
         </div>
         <hr/>
         <div className="card-section">
-        <h3 className="card__opentime">{opentime}</h3>
-        <h3 className="card__closetime">{closetime}</h3>
+        <h3 className="card__opentime">Opens: {props.optime}</h3>
+        <h3 className="card__closetime">Closes: {props.cltime}</h3>
         </div>
       </div>
     </Link>
