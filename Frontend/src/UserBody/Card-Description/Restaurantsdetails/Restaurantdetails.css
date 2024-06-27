@@ -37,11 +37,6 @@
   font-weight: 100;
   color: rgb(179, 176, 176);
 }
-.status{
-  color: green;
-  font-weight: 200;
-  font-size: 0.9rem;
-}
 .status-timing{
   color: gray;
   font-size: 0.9rem;

@@ -14,7 +14,7 @@ const Descriptionindex = () => {
 
   const sendRequestToBackend = async () => {
     try {
-      const response = await fetch("http://localhost:4500/admin/getResData/Udupi", {
+      const response = await fetch("http://localhost:4500/admin/getResData/Haldirams", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
