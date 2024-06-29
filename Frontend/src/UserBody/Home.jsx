@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Banner from './Home-Banner/Banner.jsx'
-import cardData from './Carddata.json';
-import RestaurantCard from './Card/Card.jsx' 
+import Card from './Card/Card.jsx' 
 import Chooseus from './Home-Banner/Chooseus.jsx';
 
 function Home() {

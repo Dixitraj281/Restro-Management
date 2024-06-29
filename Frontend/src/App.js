@@ -52,7 +52,7 @@ function MainComponent() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/info/*" element={<Descriptionindex />} />
+          <Route path="/info/:restaurantName/*" element={<Descriptionindex />} />
         </Routes>
         <Footer />
       </div>
