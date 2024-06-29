@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Carousel from './Carousel/carousel.jsx';
 import "./Descriptionindex.css";
 import Restaurantdetails from './Restaurantsdetails/Restaurantdetails.jsx';
@@ -11,10 +12,12 @@ import BookTable from './Restaurantsdetails/Restaurantbottom/Bottomlinks/BookTab
 
 const Descriptionindex = () => {
   const [resData, setResData] = useState({});
+  const { restaurantName } = useParams();
 
+  console.log(restaurantName);
   const sendRequestToBackend = async () => {
     try {
-      const response = await fetch("http://localhost:4500/admin/getResData/Haldirams", {
+      const response = await fetch(`http://localhost:4500/admin/getResData/${restaurantName}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -43,7 +46,7 @@ const Descriptionindex = () => {
 
   useEffect(() => {
     requestForData();
-  }, []);
+  }, [restaurantName]);
 
   useEffect(() => {
     setResData(resData);
@@ -53,7 +56,7 @@ const Descriptionindex = () => {
   const desImages = resData.resPhotos ? resData.resPhotos.map((url, index) => ({ id: index, src: url, alt: `Image ${index}` })) : [];
   // Extract foodPhotos array
   const foodPhotos = resData.foodPhotos ? resData.foodPhotos.map((url, index) => ({ id: index, src: url, alt: `Image ${index}` })) : [];
-  // Extract foodPhotos array
+  // Extract MenuPhoto array
   const MenuPhoto = resData.menuPhotos ? resData.menuPhotos.map((url, index) => ({ id: index, src: url, alt: `Image ${index}` })) : [];
 
   return (

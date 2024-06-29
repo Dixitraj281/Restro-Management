@@ -3,8 +3,9 @@ import {Link} from 'react-router-dom'
 import "./Card.css";
 
 function Card(props) {
+
   return (
-    <Link className="card" to='/info'>
+    <Link className="card" to={`/info/${props.res_name}`}>
       <img src={props.img} alt="" className="card-img" />
       <div className="card__info">
         <div class="card-section">

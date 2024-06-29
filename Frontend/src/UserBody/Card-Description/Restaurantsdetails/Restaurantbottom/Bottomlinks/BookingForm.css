@@ -14,7 +14,9 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
 } */
-
+.proceed-btn{
+  border: 1px dashed gray;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -51,6 +53,19 @@ button:hover {
 
 button.selected {
   background-color: #28a745;
+  color: white;
+}
+
+.meal-btn{
+  border: 1px dashed gray;
+}
+
+button.selected {
+  background-color: #218838;
+}
+
+.grid>Button{
+  border: 1px dashed gray;
 }
 
 button.selected:hover {
