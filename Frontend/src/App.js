@@ -13,6 +13,7 @@ import Profile from './UserBody/Profile/Profile.jsx';
 import Sidebar from './Adminportal/Admins/Sidebar/Sidebar.jsx';
 import Order from './Adminportal/Order/Order.jsx';
 import SubscriptionForm from './Adminportal/Admins/Subscription/Subscription.jsx';
+import Adminlogin from './UserBody/Login/Adminlogin.jsx';
 
 function MainComponent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -24,13 +25,21 @@ function MainComponent() {
   console.log(location.pathname);
 
   // Conditional rendering based on location.pathname
-  if (location.pathname.startsWith === '/login') {
+  if (location.pathname === '/login') {
     return (
       <Routes>
         <Route path='/login' element={<LoginReg />} />
       </Routes>
     );
-  } else if (location.pathname.startsWith('/admin')) {
+  } else if (location.pathname === '/adminlogin') {
+    return (
+      <Routes>
+        <Route path='/adminlogin' element={<Adminlogin/>} />
+      </Routes>
+    );
+  } 
+  
+  else if (location.pathname.startsWith('/admin')) {
     return (
       <>
         

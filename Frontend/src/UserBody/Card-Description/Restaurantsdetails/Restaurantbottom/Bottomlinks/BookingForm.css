@@ -17,6 +17,12 @@ h1 {
 .proceed-btn{
   border: 1px dashed gray;
 }
+
+.proceed-btn:hover{
+  background-color: rgb(143, 182, 143);
+  border: 1px solid green;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -35,21 +41,6 @@ input {
   box-sizing: border-box;
   width: 100%;
 }
-
-/* button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-button:hover {
-  background-color: rgb(206, 203, 203);
-} */
 
 button.selected {
   background-color: #28a745;
@@ -110,7 +101,8 @@ button.selected:hover {
 
 /* Offers section styling */
 .offer {
-  background-color: #ffeb3b;
+  background-color: white;
+  border: 1px solid rgb(214, 212, 212);
   padding: 10px;
   border-radius: 4px;
   font-size: 14px;
@@ -118,16 +110,18 @@ button.selected:hover {
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: black;
   flex: 1 1 calc(50% - 10px); /* Allow offers to take up half the width of container with gap */
 }
 
 .offer:hover {
-  background-color: #ffc107;
+  background-color: rgb(217, 217, 217);
 }
 
 .offer.selected {
-  background-color: #ff9800;
-  color: white;
+  background-color: #fed3d3;
+  border: 1px solid red;
+  color: black;
 }
 
 /* Add new styles for the summary section */

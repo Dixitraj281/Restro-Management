@@ -30,6 +30,7 @@ const BookTable = () => {
   const [confirmation, setConfirmation] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("");
   const [error, setError] = useState("");
+  const today = new Date().toISOString().split('T')[0];
 
   const mealTimeSlots = {
     breakfast: ["08:00 AM", "09:00 AM", "10:00 AM"],
@@ -131,6 +132,7 @@ const BookTable = () => {
             name="date"
             value={formData.date}
             onChange={handleChange}
+            min={today}
             required
           />
 
