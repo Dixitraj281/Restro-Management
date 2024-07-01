@@ -5,6 +5,7 @@ import AddFoodPhotos from "./Admins/Addphotos/AddFoodPhotos.jsx";
 import AddMenuPhotos from "./Admins/Addphotos/AddMenuPhotos.jsx";
 import AddResPhotos from "./Admins/Addphotos/AddResPhotos.jsx";
 import { Checkmark } from "react-checkmark";
+import Swal from "sweetalert2"
 import "./Admin.css";
 import axios from "axios";
 import AdminHeader from "./Admins/AdminHeader/AdminHeader.jsx";
@@ -79,7 +80,25 @@ const Admin = ({ toggleSidebar, isSidebarOpen }) => {
     return uploadImages();
   };
 
-  const handleOnClick = () => {
+ const handleOnClick = () => {
+    if (
+      hotelName.trim() === "" ||
+      description.trim() === "" ||
+      desImage.length === 0 ||
+      cusines.length === 0 ||
+      address.trim() === "" ||
+      moreInfo.length === 0 ||
+      foodImage.length === 0 ||
+      menuImage.length === 0 ||
+      resImage.length === 0 ||
+      openTime.trim() === "" ||
+      closeTime.trim() === "" ||
+      tableCap === 0
+    ) {
+      Swal.fire('Error!', 'Please fill out all the fields.', 'error');
+      return;
+    }
+
     console.log(hotelName);
     console.log(description);
     console.log(desImage);
@@ -92,20 +111,21 @@ const Admin = ({ toggleSidebar, isSidebarOpen }) => {
     console.log(openTime);
     console.log(closeTime);
     console.log(tableCap);
+
     // first i need to get all the images url for desImage which will store in another array desurls
     try {
       const handleUpload = async (desImage, num) => {
         const temp = await ImageUploaderFunction(desImage);
-        if (num == 1) {
+        if (num === 1) {
           setDesUrls(temp);
           setDesLoad(true);
-        } else if (num == 2) {
+        } else if (num === 2) {
           setFoodUrls(temp);
           setFoodLoad(true);
-        } else if (num == 3) {
+        } else if (num === 3) {
           setMenuUrls(temp);
           setMenuLoad(true);
-        } else if (num == 4) {
+        } else if (num === 4) {
           setResUrls(temp);
           setResLoad(true);
         }
@@ -119,6 +139,9 @@ const Admin = ({ toggleSidebar, isSidebarOpen }) => {
 
       uploadAllPhotosAndDocument();
       setActive(true);
+
+      Swal.fire('Success!', 'Your Restaurant details have been submitted.', 'success');
+
     } catch (err) {
       setActive(false);
       console.log("Images were not successfully stored!!");

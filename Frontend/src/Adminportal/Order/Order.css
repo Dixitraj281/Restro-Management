@@ -9,6 +9,14 @@
   background-color: #F2F2F2;
 }
 
+.no-data{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 10px;
+}
+
 .content {
   padding: 20px;
   transition: margin-left 0.3s;
