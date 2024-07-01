@@ -3,18 +3,21 @@ import Carousel from './Carousel/carousel.jsx';
 import "./Descriptionindex.css";
 import Restaurantdetails from './Restaurantsdetails/Restaurantdetails.jsx';
 import Bottomnav from './Restaurantsdetails/Restaurantbottom/Bottomnav.jsx';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes,useParams } from 'react-router-dom';
 import Overview from './Restaurantsdetails/Restaurantbottom/Bottomlinks/Overview.jsx';
 import Photos from './Restaurantsdetails/Restaurantbottom/Bottomlinks/Photos.jsx';
 import Menu from './Restaurantsdetails/Restaurantbottom/Bottomlinks/Menu.jsx';
 import BookTable from './Restaurantsdetails/Restaurantbottom/Bottomlinks/BookTable.jsx';
 
 const Descriptionindex = () => {
+  
   const [resData, setResData] = useState({});
+  const {resname} = useParams();
+
 
   const sendRequestToBackend = async () => {
     try {
-      const response = await fetch("http://localhost:4500/admin/getResData/Udupi", {
+      const response = await fetch(`http://localhost:4500/admin/getResData/${resname}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -32,9 +35,9 @@ const Descriptionindex = () => {
     }
   };
 
-  const requestForData = async (e) => {
+  const requestForData = async (resname) => {
     try {
-      const res = await sendRequestToBackend();
+      const res = await sendRequestToBackend(resname);
       console.log(res);
     } catch (err) {
       console.log("Error while fetching data");
@@ -42,7 +45,7 @@ const Descriptionindex = () => {
   };
 
   useEffect(() => {
-    requestForData();
+    requestForData(resname);
   }, []);
 
   useEffect(() => {

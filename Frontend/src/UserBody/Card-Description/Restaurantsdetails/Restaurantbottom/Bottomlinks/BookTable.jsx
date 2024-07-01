@@ -9,11 +9,13 @@ import {
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import "./BookingForm.css";
+import { useParams } from "react-router-dom";
 
 const BookTable = () => {
+  
   const [formData, setFormData] = useState({
     userName:"Ayush",
-    name: "Udupi",
+    name:"udupi",
     phone: "8291441089",
     date: "",
     time: "",
@@ -65,7 +67,7 @@ const BookTable = () => {
   const bookTable = async (details) => {
     console.log(details);
     try {
-      const response = await fetch("http://localhost:4500/booktable/Udupi", {
+      const response = await fetch(`http://localhost:4500/booktable`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

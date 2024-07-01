@@ -2,7 +2,7 @@ const { json } = require("body-parser");
 const addResModel = require("../models/addResModel");
 const restaurants = require("../models/addResModel");
 const ordersModel = require("../models/ordersModel");
-const moment = require("moment");
+
 
 const addRes = async (req, res) => {
   console.log(req.body);

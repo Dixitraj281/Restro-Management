@@ -128,6 +128,7 @@ const bookTable = async (req, res)=>{
     console.log("bookTable api has been hit");
     const details = req.body;// here we have recieved the data
     // next step is to send this data to backend and store it
+    console.log(details);
     try{
     const newOrder = new Order({
         userName: details.userName,

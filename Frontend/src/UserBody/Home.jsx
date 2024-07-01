@@ -4,9 +4,11 @@ import Banner from './Home-Banner/Banner.jsx'
 import cardData from './Carddata.json';
 import Card from './Card/Card.jsx' 
 import Chooseus from './Home-Banner/Chooseus.jsx';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
     const[resCol, setResCol]= useState([]);
+    const navigate = useNavigate();
     const resData = async()=>{
         try {
             const response = await fetch("http://localhost:4500/getAllRes", {
@@ -37,9 +39,12 @@ function Home() {
     useEffect(()=>{
         setResCol(resCol);
     },[resCol]);
+    const showRes = (resname)=>{
+        console.log("hello")
 
-   
 
+
+    }
     return (
         <div className='home'>
             <Banner />
@@ -47,7 +52,7 @@ function Home() {
             <h1>Bangalore Restaurants</h1>
             <div className='home__section'>
             {resCol.map((card, index) => (
-                <Card
+                <Card 
                     key={index}
                     res_name={card.res_name}
                     optime={card.openTime}
