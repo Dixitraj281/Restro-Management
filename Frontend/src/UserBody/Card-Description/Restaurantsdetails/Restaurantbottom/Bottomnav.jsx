@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useLocation,useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "./Bottomnav.css";
 
 function Bottomnav() {
     const location = useLocation();
     const { restaurantName } = useParams();
+    
 
     return (
         <div className='bottom-header'>

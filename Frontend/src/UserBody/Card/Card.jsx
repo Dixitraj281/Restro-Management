@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import "./Card.css";
 
 function Card(props) {
+
   return (
     <Link className="card" to={`/info/${props.res_name}`}>
       <img src={props.img} alt="" className="card-img" />
@@ -21,7 +22,7 @@ function Card(props) {
                 <div class="sc-1q7bklc-6 liCXOR">
                   <div class="sc-1q7bklc-5 kHxpSk">
                     <div class="sc-1q7bklc-2 pxJGx">
-                      <i class="sc-rbbb40-1 iFnyeo" color="#FFFFFF">
+                      <i class="sc-rbbb40-1 iFnyeo" >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="#FFFFFF"
@@ -51,7 +52,7 @@ function Card(props) {
           <p class="card-location">location</p>
           <p class="card-km">1.7 km</p>
         </div>
-        <hr/>
+        <hr className="line-bar"/>
         <div className="card-section">
         <h3 className="card__opentime">Opens: {props.optime}</h3>
         <h3 className="card__closetime">Closes: {props.cltime}</h3>

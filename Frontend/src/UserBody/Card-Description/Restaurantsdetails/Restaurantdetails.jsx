@@ -16,10 +16,10 @@ const Restaurantdetails = (props) => {
             <span key={index}>{cusine} </span>
           ))
         ) : (
-          <p>No cuisines available</p>
+          <p>No Carousel Images available</p>
         )}</div>
       <div className="address">{props.details.address}</div>
-        <div className="timestatus"> <span className='status'>{props.details.openTime}</span> - <span className='status-timing'>{props.details.closeTime}</span></div>
+        <div className="timestatus"> <span className='status-timing'>{props.details.openTime}</span> - <span className='status-timing'>{props.details.closeTime}</span></div>
         <div className="extra-details">
                 <Button variant="outlined" className='extra-details-btn'>Direction</Button>
                 <Button variant="outlined" className='extra-details-btn'>Bookmark</Button>

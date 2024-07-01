@@ -9,13 +9,16 @@ import {
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import "./BookingForm.css";
-import { useParams } from "react-router-dom";
+import {Button} from 'antd'
+import { useLocation } from "react-router-dom";
 
 const BookTable = () => {
+  const location = useLocation();
+  const restaurantname = location.pathname.split("/")[2];
   
   const [formData, setFormData] = useState({
-    userName:"Ayush",
-    name:"udupi",
+    userName:"Dixit",
+    name: restaurantname,
     phone: "8291441089",
     date: "",
     time: "",
@@ -27,6 +30,7 @@ const BookTable = () => {
   const [confirmation, setConfirmation] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("");
   const [error, setError] = useState("");
+  const today = new Date().toISOString().split('T')[0];
 
   const mealTimeSlots = {
     breakfast: ["08:00 AM", "09:00 AM", "10:00 AM"],
@@ -67,7 +71,7 @@ const BookTable = () => {
   const bookTable = async (details) => {
     console.log(details);
     try {
-      const response = await fetch(`http://localhost:4500/booktable`, {
+      const response = await fetch(`http://localhost:4500/booktable/${restaurantname}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,7 +109,7 @@ const BookTable = () => {
       const bookTableStatus = await bookTable(details);
       if (bookTableStatus.success) {
         setConfirmation(
-          `Thank you, ${formData.name}! Your table for ${formData.guests} on ${formData.date} at ${formData.time} for ${formData.meal} has been booked with ${formData.offer}.`
+          `Thank you, ${formData.userName}! Your table for ${formData.guests} on ${formData.date} at ${formData.time} for ${formData.meal} has been booked with ${formData.offer} at ${formData.name}.`
         );
         console.log(formData);
       } else {
@@ -128,6 +132,7 @@ const BookTable = () => {
             name="date"
             value={formData.date}
             onChange={handleChange}
+            min={today}
             required
           />
 
@@ -146,35 +151,36 @@ const BookTable = () => {
         <div className="meal-selection">
           <h2>Select Meal</h2>
           <div className="meal-options">
-            <button
+            <Button
               type="button"
               onClick={() => handleMealSelection("breakfast")}
+              className="selected"
             >
               Breakfast
-            </button>
-            <button type="button" onClick={() => handleMealSelection("lunch")}>
+            </Button>
+            <Button className="selected" type="button" onClick={() => handleMealSelection("lunch")}>
               Lunch
-            </button>
-            <button type="button" onClick={() => handleMealSelection("dinner")}>
+            </Button>
+            <Button className="selected" type="button" onClick={() => handleMealSelection("dinner")}>
               Dinner
-            </button>
+            </Button>
           </div>
           {selectedMeal && (
             <div className="time-slots">
               <h3>
                 Select Time for{" "}
-                {selectedMeal.charAt(0).toUpperCase() + selectedMeal.slice(1)}
+                <span className="timeslot-btn">{selectedMeal.charAt(0).toUpperCase() + selectedMeal.slice(1)}</span>
               </h3>
               <div className="grid">
                 {mealTimeSlots[selectedMeal].map((time, index) => (
-                  <button
+                  <Button
                     key={index}
                     type="button"
                     className={formData.time === time ? "selected" : ""}
                     onClick={() => setFormData({ ...formData, time })}
                   >
                     {time}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -244,9 +250,9 @@ const BookTable = () => {
 
         {error && <div className="error-message">{error}</div>}
 
-        <button type="submit" onClick={handleSubmit}>
+        <Button type="submit" className="proceed-btn" onClick={handleSubmit}>
           Proceed to Cart
-        </button>
+        </Button>
       </form>
       {confirmation && (
         <div id="confirmation" className="confirmation">
