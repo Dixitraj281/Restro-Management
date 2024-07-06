@@ -5,11 +5,14 @@ const DB = require('./database');
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
 const adminRoute = require('./routes/adminRoute');
+const cookieParser = require('cookie-parser');
 const corsOptions = {
     origin: 'http://localhost:3000',//(https://your-client-app.com)
-    optionsSuccessStatus: 200,
+    credentials:true
 };
 app.use(cors(corsOptions));
+app.use(cookieParser());
+
 
 app.use('/',userRoute);//user route
 app.use('/admin',adminRoute);

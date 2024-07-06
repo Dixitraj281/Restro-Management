@@ -7,9 +7,36 @@ import AdminHeader from '../Admins/AdminHeader/AdminHeader';
 const Order = ({ toggleSidebar, isSidebarOpen }) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [profileDetails, setProfileDetails] = useState({
+    username:"",
+    designation: "Admin",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    resOwned:"" 
+  });
+  const getAdminData =()=>{
+    const adminData = JSON.parse(localStorage.getItem('adminProfile'));
+    console.log(adminData);
+    
+    
+    setProfileDetails({
+      username:`${adminData.first_name} ${adminData.last_name}`,
+      designation: "User",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      resOwned:"Haldirams"
+    });
+  }
+  useEffect(()=>{
+    getAdminData();
+
+  },[]);
+
+
 
   useEffect(() => {
-    axios.get('http://localhost:4500/getallorders')
+    
+    axios.get(`http://localhost:4500/admin/getallorders/${profileDetails.resOwned}`)
       .then(response => {
         setOrders(response.data);
         setLoading(false);
@@ -19,7 +46,8 @@ const Order = ({ toggleSidebar, isSidebarOpen }) => {
         setLoading(false);
       });
   }, []);
-
+  
+  
   return (
     <div className='order-topcontainer'>
       <div className='order-main'>

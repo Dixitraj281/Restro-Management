@@ -11,10 +11,15 @@ import profile from "../../Assets/Subtract.svg";
 import AdminHeader from "../../Adminportal/Admins/AdminHeader/AdminHeader";
 
 const Profile = ({ toggleSidebar, isSidebarOpen }) => {
+
+
+  
+  
+
   const [isEditing, setIsEditing] = useState(false);
   const [profileDetails, setProfileDetails] = useState({
-    username: "Julia Smith",
-    designation: "User",
+    username:"",
+    designation: "Admin",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   });
@@ -41,6 +46,27 @@ const Profile = ({ toggleSidebar, isSidebarOpen }) => {
       [name]: value,
     });
   };
+  const getAdminData =()=>{
+    const adminData = JSON.parse(localStorage.getItem('adminProfile'));
+    console.log(adminData);
+    console.log(1);
+    
+    setProfileDetails({
+      username:`${adminData.first_name} ${adminData.last_name}`,
+      designation: "User",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  
+
+    });
+  }
+  useEffect(()=>{
+    getAdminData();
+
+  },[]);
+ 
+  
+ 
 
   const handleSave = () => {
     // Add your save logic here (e.g., API call to save the details)

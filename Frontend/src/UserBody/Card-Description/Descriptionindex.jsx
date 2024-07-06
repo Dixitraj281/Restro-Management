@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import Carousel from './Carousel/carousel.jsx';
 import "./Descriptionindex.css";
 import Restaurantdetails from './Restaurantsdetails/Restaurantdetails.jsx';
