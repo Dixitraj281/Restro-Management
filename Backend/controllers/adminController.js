@@ -306,6 +306,7 @@ const getFutureOrders = async (req, res) => {
 };
 const getAllOrders = async(req, res)=>{
     const resName = req.params.resname;
+    console.log("getAllOrders api hit");
     const allOrders = [];
     try{
      const orders = await ordersModel.find({res_name:resName});
@@ -314,9 +315,11 @@ const getAllOrders = async(req, res)=>{
       }
       else
       {
-        throw new Error("Restraunt with this name does not exist")
+        res.send({});
+        throw new Error("Restraunt with this name does not exist");
+        
       }
-      res.send(allOrders);
+      
     }
     catch(err){
       console.log(err);

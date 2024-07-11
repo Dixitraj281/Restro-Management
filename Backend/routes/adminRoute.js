@@ -32,7 +32,7 @@ admin.get('/verify?:id',adminController.verifyMail);// once user is signed up he
 
 admin.post('/addrestraunt', auth.isLogin,adminController.addRes);// post request to handle add res feature
 
-admin.get('/getResData/:resname',auth.isLogin,adminController.getResData);// get request to handle get specific restraunt data
+admin.get('/getResData/:resname',adminController.getResData);// get request to handle get specific restraunt data
 
 admin.get('/getpreviousorders/:id',auth.isLogin,adminController.getPreviousOrders);//get request to get all the previous orders of a particular res according to todays date
 
@@ -40,7 +40,7 @@ admin.get('/gettodaysorders/:id',auth.isLogin ,adminController.getTodayOrders);/
 
 admin.get('/getfutureorders/:id',auth.isLogin,adminController.getFutureOrders);//get request to get all the future orders of a particular res according to todays date
 
-admin.get('/getallorders/:resname',auth.isLogin ,adminController.getAllOrders);//get request to get  all orders from of a particular restraunt
+admin.get('/getallorders/:resname' ,adminController.getAllOrders);//get request to get  all orders from of a particular restraunt
 
 module.exports = admin;
 

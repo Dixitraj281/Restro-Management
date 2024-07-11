@@ -181,5 +181,6 @@ module.exports = {
     insertUser,
     homeupload,
     bookTable,
-    allRes
+    allRes,
+    verifyLogin
 }

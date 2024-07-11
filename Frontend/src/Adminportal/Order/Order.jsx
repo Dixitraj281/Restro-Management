@@ -29,23 +29,42 @@ const Order = ({ toggleSidebar, isSidebarOpen }) => {
   }
   useEffect(()=>{
     getAdminData();
+    getAllorders();
 
   },[]);
+  useEffect(()=>{
+      getAllorders();
+  },[profileDetails])
 
 
-
-  useEffect(() => {
+    const getAllorders = async()=>{
+      console.log("entered into getAllOrderFrontendApi");
+      console.log(`${profileDetails.resOwned}`);
+      try{
+        
+        const response = await fetch(`http://localhost:4500/admin/getallorders/${profileDetails.resOwned}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          }
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
     
-    axios.get(`http://localhost:4500/admin/getallorders/${profileDetails.resOwned}`)
-      .then(response => {
-        setOrders(response.data);
+        const data = await response.json();
+        console.log("data came");
+        setOrders(data);
         setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching orders:', error);
-        setLoading(false);
-      });
-  }, []);
+        console.log(data);
+        
+      } catch (err) {
+        console.log(err);
+      }
+
+    }
+
+ 
   
   
   return (
@@ -76,11 +95,11 @@ const Order = ({ toggleSidebar, isSidebarOpen }) => {
                 <tbody>
                   {orders.map((order, index) => (
                     <tr key={index}>
-                      <td>{order.id}</td>
-                      <td>{order.Date}</td>
-                      <td>{order.name}</td>
-                      <td className={`Payment ${order.Payment.replace(' ', '-').toLowerCase()}`}>{order.Payment}</td>
-                      <td>{order.amount}</td>
+                      <td>{order.userName}</td>
+                      <td>{order.date}</td>
+                      <td>{order.timing}</td>
+                      {/* <td className={`Payment ${order.Payment.replace(' ', '-').toLowerCase()}`}>{order.Payment}</td>
+                      <td>{order.amount}</td> */}
                     </tr>
                   ))}
                 </tbody>
